@@ -1,0 +1,2 @@
+test_img_1.jpg:
+    - url: https://cdn.pixabay.com/photo/2020/04/18/12/23/woman-5059062_960_720.jpg
