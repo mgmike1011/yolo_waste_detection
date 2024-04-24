@@ -7,6 +7,7 @@ from ultralytics import YOLO
 
 from utilities.parsing_vaildator import dir_path, file_path
 
+# Parameters - https://docs.ultralytics.com/modes/predict/#inference-arguments
 DEFAULT_MODEL_PATH = "models/yolov9c.pt"
 OUTPUT_DIRECTORY_PATH_SUBDIRECTORY = "pyexp"
 DEFAULT_CONF_VALUE = 0.25

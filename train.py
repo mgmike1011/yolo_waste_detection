@@ -17,7 +17,7 @@ def main(input_data: file_path, model_path: file_path, output_folder: dir_path, 
     save_ = True
     save_period_ = -1
     cache_ = False
-    device_ = 0
+    device_ = "0"
     workers_ = 8
     project_ = output_folder
     name_ = run_name
