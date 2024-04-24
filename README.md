@@ -8,7 +8,7 @@ git clone https://github.com/mgmike1011/yolo_waste_detection.git
 2. Enter directory and create other directories
 ```bash
 cd yolo_waste_detection
-mkdir detect_results 
+mkdir detect_results train_results
 ```
 3. Prepare python environment
 ```bash
@@ -93,12 +93,19 @@ nc: 1
 names: ['class_name']
 ```
 ```bash
-python train.py #TODO:
+python train.py --data path/to/data.yaml \
+  --model path/to/model.pt \
+  --output path/to/output/directory \
+  --name run1
+  --resume False
 ```
 **Params:**
-* a
-* b 
-TODO:
+* data - Input data YAML file - *Required*,
+* output - Path to directory where trained models will be saved - *Required*,
+* model - Path to model - *Required*,
+* name - Run name - *Required*,
+* resume - Resumes training from the last saved checkpoint. \
+**Training setting:** all training hyperparameters and setting are inside [`train.py`](train.py) file for manual change.
 ## Validation
 Validation implementation: [`val.py`](val.py) 
 ```bash
