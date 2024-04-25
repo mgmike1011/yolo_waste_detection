@@ -96,7 +96,7 @@ names: ['class_name']
 python train.py --data path/to/data.yaml \
   --model path/to/model.pt \
   --output path/to/output/directory \
-  --name run1
+  --name run1 \
   --resume False
 ```
 **Params:**
@@ -109,11 +109,39 @@ python train.py --data path/to/data.yaml \
 ## Validation
 Validation implementation: [`val.py`](val.py) 
 ```bash
-python val.py  #TODO:
+python val.py --data path/to/data.yaml \
+  --model path/to/model.pt \
+  --device "0" \
+  --imgsz 640 \
+  --batch 100 \
+  --savejson False \
+  --savehybrid False \
+  --conf 0.001 \
+  --iou 0.6 \
+  --maxdet 300 \
+  --half True \
+  --dnn False \
+  --plots False \
+  --rect False \
+  --split "val"
 ```
 **Params:**
-* a - 
-* b -
+* model - Path to model - *Required*,
+* data - Input data YAML file - *Required*,
+* split - Determines the dataset split to use for validation (val, test, or train) - *Required*, 
+* device - Device for inference (e.g., cpu, cuda:0 or 0),
+* imgsz - Image size for inference,
+* batch - Number of images per batch.
+* savejson - Save the results to a JSON file.
+* savehybrid - Save a hybrid version of labels that combines original annotations with additional model predictions,
+* conf - Minimum confidence threshold for detections,
+* iou - Intersection Over Union (IoU) threshold for Non-Maximum Suppression (NMS),
+* maxdet - Maximum number of detections per image,
+* half - Enables half-precision (FP16),
+* dnn - Use the OpenCV DNN module for ONNX model inference,
+* plots - Generate and save plots of predictions versus ground truth for visual evaluation of the model's performance,
+* rect - Use rectangular inference for batching.
+## Combined
 TODO:
 ## Synthetic data generator
 [Synthetic generator](https://github.com/AgniechaP/synthetic_data_generation) - Agnieszka Piórkowska, Miłosz Gajewski

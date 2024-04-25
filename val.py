@@ -61,7 +61,7 @@ if __name__ == "__main__":
     parser.add_argument("--savehybrid", type=bool,
                         help="Save a hybrid version of labels that combines original annotations with additional "
                              "model predictions.",
-                        default=DEFAULT_SAVE_JSON_VALUE, required=False)
+                        default=DEFAULT_SAVE_HYBRID_VALUE, required=False)
     parser.add_argument("--conf", type=float, help="Minimum confidence threshold for detections.",
                         default=DEFAULT_CONF_VALUE, required=False)
     parser.add_argument("--iou", type=float, help="Intersection Over Union (IoU) threshold for Non-Maximum "
