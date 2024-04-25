@@ -1,5 +1,5 @@
 # YOLOv9 Waste Detection
-[YOLOv9](https://github.com/WongKinYiu/yolov9) Python interface for using with custom datasets. TODO:
+[YOLOv9](https://github.com/WongKinYiu/yolov9) (Ultralytics) Python interface for training, validating and running detection on custom datasets. The implementation included in this repository focuses on using the YOLO algorithm for waste detection algorithms for the needs of a master's thesis, but it can be successfully used for other purposes.
 ## Installation
 1. Clone repository
 ```bash
@@ -142,7 +142,8 @@ python val.py --data path/to/data.yaml \
 * plots - Generate and save plots of predictions versus ground truth for visual evaluation of the model's performance,
 * rect - Use rectangular inference for batching.
 ## Combined
-TODO:
+Combined implementation: [`combined.ipynb`](combined.ipynb)
+In order to easily use the prepared scripts in environments such as Google Colab, jupyternotebook was also developed, combining all functionalities within one file.
 ## Synthetic data generator
 [Synthetic generator](https://github.com/AgniechaP/synthetic_data_generation) - Agnieszka Piórkowska, Miłosz Gajewski
 ## YOLOv9 credits
