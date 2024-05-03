@@ -5,7 +5,7 @@ import sys
 
 from ultralytics import YOLO
 
-from utilities.parsing_vaildator import dir_path, file_path
+from utilities.parsing_vaildator import dir_path, file_path, str2bool
 
 # Parameters - https://docs.ultralytics.com/modes/predict/#inference-arguments
 DEFAULT_MODEL_PATH = "models/yolov9c.pt"
@@ -112,13 +112,13 @@ if __name__ == "__main__":
                         default=DEFAULT_IMGSZ_VALUE, required=False)
     parser.add_argument("--device", type=str, help="Device for inference (e.g., cpu, cuda:0 or 0).",
                         default=DEFAULT_DEVICE_VALUE, required=False)
-    parser.add_argument("--savetxt", type=bool, help="Save results to txt result file.",
+    parser.add_argument("--savetxt", type=str2bool, help="Save results to txt result file.",
                         default=DEFAULT_SAVE_TXT_VALUE, required=False)
-    parser.add_argument("--saveconf", type=bool, help="Save confidence score to txt result file.",
+    parser.add_argument("--saveconf", type=str2bool, help="Save confidence score to txt result file.",
                         default=DEFAULT_SAVE_CONF_VALUE, required=False)
-    parser.add_argument("--saveimg", type=bool, help="Save annotated image.",
+    parser.add_argument("--saveimg", type=str2bool, help="Save annotated image.",
                         default=DEFAULT_SAVE_IMG_VALUE, required=False)
-    parser.add_argument("--savecfg", type=bool, help="Save config file.",
+    parser.add_argument("--savecfg", type=str2bool, help="Save config file.",
                         default=DEFAULT_SAVE_CFG_VALUE, required=False)
 
     args = parser.parse_args()

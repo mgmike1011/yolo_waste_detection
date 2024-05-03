@@ -2,7 +2,7 @@ import argparse
 
 from ultralytics import YOLO
 
-from utilities.parsing_vaildator import dir_path, file_path
+from utilities.parsing_vaildator import file_path, str2bool
 
 # Parameters - https://docs.ultralytics.com/modes/val/#arguments-for-yolo-model-validation
 DEFAULT_IMGSZ_VALUE = 640
@@ -38,10 +38,9 @@ def main(data_path: file_path,
     # Load model and validate
     model = YOLO(model_path)
     print("--- Validation start ---")
-    results = model.val(data=data_path, imgsz=imgsz, batch=batch, device=device, save_json=save_json,
-                        save_hybrid=save_hybrid, conf=conf, iou=iou, max_det=max_det, half=half,
-                        dnn=dnn, plots=plots, rect=rect, split=split)
-    print(results)
+    model.val(data=data_path, imgsz=imgsz, batch=batch, device=device, save_json=save_json,
+              save_hybrid=save_hybrid, conf=conf, iou=iou, max_det=max_det, half=half,
+              dnn=dnn, plots=plots, rect=rect, split=split)
     print("--- Validation end ---")
 
 
@@ -56,27 +55,27 @@ if __name__ == "__main__":
                         default=DEFAULT_IMGSZ_VALUE, required=False)
     parser.add_argument("--batch", type=int, help="Number of images per batch.",
                         default=DEFAULT_BATCH_VALUE, required=False)
-    parser.add_argument("--savejson", type=bool, help="Save the results to a JSON file.",
+    parser.add_argument("--savejson", type=str2bool, help="Save the results to a JSON file.",
                         default=DEFAULT_SAVE_JSON_VALUE, required=False)
-    parser.add_argument("--savehybrid", type=bool,
+    parser.add_argument("--savehybrid", type=str2bool,
                         help="Save a hybrid version of labels that combines original annotations with additional "
                              "model predictions.",
                         default=DEFAULT_SAVE_HYBRID_VALUE, required=False)
     parser.add_argument("--conf", type=float, help="Minimum confidence threshold for detections.",
                         default=DEFAULT_CONF_VALUE, required=False)
     parser.add_argument("--iou", type=float, help="Intersection Over Union (IoU) threshold for Non-Maximum "
-                        "Suppression (NMS).", default=DEFAULT_IOU_VALUE, required=False)
+                                                  "Suppression (NMS).", default=DEFAULT_IOU_VALUE, required=False)
     parser.add_argument("--maxdet", type=int, help="Maximum number of detections per image.",
                         default=DEFAULT_MAX_DET_VALUE, required=False)
-    parser.add_argument("--half", type=bool, help="Enables half-precision (FP16).",
+    parser.add_argument("--half", type=str2bool, help="Enables half-precision (FP16).",
                         default=DEFAULT_HALF_VALUE, required=False)
-    parser.add_argument("--dnn", type=bool, help="Use the OpenCV DNN module for ONNX model inference.",
+    parser.add_argument("--dnn", type=str2bool, help="Use the OpenCV DNN module for ONNX model inference.",
                         default=DEFAULT_DNN_VALUE, required=False)
-    parser.add_argument("--plots", type=bool,
+    parser.add_argument("--plots", type=str2bool,
                         help="Generate and save plots of predictions versus ground truth for visual evaluation of the "
                              "model's performance.",
                         default=DEFAULT_PLOTS_VALUE, required=False)
-    parser.add_argument("--rect", type=bool, help="Use rectangular inference for batching.",
+    parser.add_argument("--rect", type=str2bool, help="Use rectangular inference for batching.",
                         default=DEFAULT_RECT_VALUE, required=False)
     parser.add_argument("--split", type=str,
                         help="Determines the dataset split to use for validation (val, test, or train)",
@@ -93,7 +92,7 @@ if __name__ == "__main__":
          save_hybrid=args.savehybrid,
          conf=args.conf,
          iou=args.iou,
-         max_det=args.max_det,
+         max_det=args.maxdet,
          half=args.half,
          dnn=args.dnn,
          plots=args.plots,

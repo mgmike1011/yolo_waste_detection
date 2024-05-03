@@ -2,7 +2,9 @@ import argparse
 
 from ultralytics import YOLO
 
-from utilities.parsing_vaildator import dir_path, file_path
+from utilities.parsing_vaildator import dir_path, file_path, str2bool
+
+DEFAULT_MODEL_NAME = "yolov9c.pt"
 
 
 def main(input_data: file_path, model_path: file_path, output_folder: dir_path, run_name: str, resume_run: bool):
@@ -75,10 +77,10 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="YOLO train model with given input data.")
 
     parser.add_argument("--data", type=file_path, help="Input data YAML file.", required=True)
-    parser.add_argument("--model", type=file_path, help="Path to a model.", required=True)
+    parser.add_argument("--model", type=str, help="Model name or path.", default=DEFAULT_MODEL_NAME, required=False)
     parser.add_argument("--output", type=dir_path, help="Path to output directory.", required=True)
-    parser.add_argument("--name", type=dir_path, help="Run name.", required=True)
-    parser.add_argument("--resume", type=bool, help="Resumes training from the last saved checkpoint.",
+    parser.add_argument("--name", type=str, help="Run name.", required=True)
+    parser.add_argument("--resume", type=str2bool, help="Resumes training from the last saved checkpoint.",
                         default=False, required=False)
 
     args = parser.parse_args()

@@ -166,3 +166,5 @@ models/
 detect_results/
 # Train results directory
 train_results/
+# Datasets directory
+datasets/
