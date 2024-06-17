@@ -3,16 +3,15 @@ import sys
 import argparse
 import json
 
-from ultralytics import YOLO
 from sahi import AutoDetectionModel
-from sahi.predict import get_prediction, get_sliced_prediction, predict
+from sahi.predict import get_sliced_prediction
 from tqdm import tqdm
 
 from utilities.parsing_vaildator import dir_path, file_path, str2bool
 
 OUTPUT_DIRECTORY_PATH_SUBDIRECTORY = "pyexp"
 CONFIG_JSON_NAME = "cfg.json"
-DEFAULT_CONF_VALUE = 0.66
+DEFAULT_CONF_VALUE = 0.5
 DEFAULT_OVERLAP_VALUE = 0.1
 DEFAULT_IMGSZ_VALUE = 640
 DEFAULT_DEVICE_VALUE = "cuda:0"
@@ -83,7 +82,6 @@ def main(input_path: str,
             output_list.append(coco)
         if visual:
             result.export_visuals(export_dir=output_directory_path, file_name=basename)
-    # print(output_list)
     # Prepare json config file
     config_json_path = os.path.join(output_directory_path, CONFIG_JSON_NAME)
     with open(config_json_path, "w") as file:
