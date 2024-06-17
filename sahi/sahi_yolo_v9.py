@@ -7,7 +7,9 @@ from sahi import AutoDetectionModel
 from sahi.predict import get_sliced_prediction
 from tqdm import tqdm
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
 from utilities.parsing_vaildator import dir_path, file_path, str2bool
+
 
 OUTPUT_DIRECTORY_PATH_SUBDIRECTORY = "pyexp"
 CONFIG_JSON_NAME = "cfg.json"
