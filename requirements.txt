@@ -1,2 +1,5 @@
 typeguard==4.2.1
 ultralytics==8.2.2
+sahi~=0.11.16
+tqdm~=4.66.2
+pycocotools~=2.0.7
